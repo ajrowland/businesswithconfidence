@@ -1,4 +1,4 @@
-name: sitespeed.io
+name: performance
 on: push
 jobs:
   run-sitespeed:
