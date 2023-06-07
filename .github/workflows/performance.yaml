@@ -22,8 +22,6 @@ jobs:
         run: |
           npm ci
           npm run build
-          npm run preview & npx wait-on http://127.0.0.1:3000
-        env:
-          CI: true
+          npm run preview --host & npx wait-on http://localhost:3000
       - name: run performance tests
         run: docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:27.8.0 http://localhost:3000 --budget.configPath .github/budget.json -n 1
