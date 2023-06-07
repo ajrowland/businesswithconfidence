@@ -1,9 +1,14 @@
 name: performance
-on: push
+on:
+  pull_request_target:
+    types:
+      - opened
+    branches:
+      - "release/**"
 jobs:
-  run-sitespeed:
+  run-performance:
     runs-on: ubuntu-latest
-    name: running sitespeed.io
+    name: run performance tests
     steps:
       - name: checkout solution
         uses: actions/checkout@v3
