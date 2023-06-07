@@ -5,7 +5,17 @@ jobs:
     runs-on: ubuntu-latest
     name: running sitespeed.io
     steps:
-      - name: code checkout
+      - name: checkout solution
         uses: actions/checkout@v3
-      - name: running sitespeed.io container with arguments and optional Docker options
-        run: docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:27.8.0 https://www.sitespeed.io --budget.configPath .github/budget.json -n 1
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: build and start solution
+        working-directory: ./packages/web
+        run: |
+          npm ci
+          npm run build
+          new run preview
+      - name: run sitespeed.io
+        run: docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:27.8.0 http://localhost:3000 --budget.configPath .github/budget.json -n 1
