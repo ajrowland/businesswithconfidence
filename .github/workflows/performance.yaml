@@ -21,7 +21,7 @@ jobs:
         run: |
           npm ci
           npm run build
-          npm run preview & npx wait-on http://localhost:3000
+          npm run preview & npx wait-on http://127.0.0.1:3000
         env:
           CI: true
       - name: run performance tests
