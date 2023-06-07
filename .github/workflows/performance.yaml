@@ -8,7 +8,7 @@ on:
 jobs:
   run-performance:
     runs-on: ubuntu-latest
-    name: run performance tests
+    name: run build and tests
     steps:
       - name: checkout solution
         uses: actions/checkout@v3
@@ -21,6 +21,8 @@ jobs:
         run: |
           npm ci
           npm run build
-          npm run preview
-      - name: run sitespeed.io
+          npm run preview & npx wait-on http://localhost:3000
+        env:
+          CI: true
+      - name: run performance tests
         run: docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:27.8.0 http://localhost:3000 --budget.configPath .github/budget.json -n 1
