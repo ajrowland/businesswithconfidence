@@ -26,4 +26,4 @@ jobs:
         env:
           CI: true
       - name: run performance tests
-        run: docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:27.8.0 http://127.0.0.1:3000 --budget.configPath .github/budget.json -n 1
+        run: docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:27.8.0 http://localhost:3000 --budget.configPath .github/budget.json -n 1
