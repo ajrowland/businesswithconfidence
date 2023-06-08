@@ -17,13 +17,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
-      - name: build and start solution
-        working-directory: ./packages/web
+      - name: build and start solution, and run tests
         run: |
+          cd ./packages/web
           npm ci
           npm run build
           npm run preview --host & npx wait-on http://localhost:3000
-        env:
-          CI: true
-      - name: run performance tests
-        run: docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:27.8.0 http://localhost:3000 --budget.configPath .github/budget.json -n 1
+          docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:27.8.0 http://localhost:3000 --budget.configPath ../../.github/budget.json -n 1
