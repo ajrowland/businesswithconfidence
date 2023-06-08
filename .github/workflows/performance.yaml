@@ -23,4 +23,5 @@ jobs:
           npm ci
           npm run build
           npm run preview --host & npx wait-on http://localhost:3000
-          docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:27.8.0 http://localhost:3000 --budget.configPath ../../.github/budget.json -n 1
+          pwd
+          docker run -v "$(pwd):/sitespeed.io" sitespeedio/sitespeed.io:27.8.0 http://localhost:3000 --budget.configPath .github/budget.json -n 1
