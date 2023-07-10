@@ -27,7 +27,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v10
         with:
           urls: |
-            /
+            http://localhost:3000/
           #budgetPath: ../budget.json
           uploadArtifacts: true
           temporaryPublicStorage: true
