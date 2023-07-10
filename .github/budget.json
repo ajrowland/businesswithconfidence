@@ -1,18 +1,1 @@
-{
-  "budget": {
-    "requests": {
-      "total": 100
-    },
-    "transferSize": {
-      "total": 400000
-    },
-    "thirdParty": {
-      "requests": 0
-    },
-    "score": {
-      "bestpractice": 100,
-      "privacy": 70,
-      "performance": 90
-    }
-  }
-}
+[]
