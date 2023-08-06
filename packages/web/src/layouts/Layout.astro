@@ -39,7 +39,10 @@ const seoImage = `${host}/assets/debbie-emma.webp`;
       }}
       extend={{
         // extending the default link tags
-        link: [{ rel: "icon", href: "/favicon.ico" }],
+        link: [
+					{ rel: "icon", href: "/favicon.ico" },
+					{ rel: "image_src", href: seoImage }
+				],
         // extending the default meta tags
         meta: [
           {
